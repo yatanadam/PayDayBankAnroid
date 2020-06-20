@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.payday.kdogruer.data.Resource"/>
+        <import type="com.payday.kdogruer.data.Status"/>
+        <variable
+            name="resource"
+            type="com.payday.kdogruer.data.Resource"/>
+        <variable
+            name="customer"
+            type="com.payday.kdogruer.data.local.entity.CustomerEntity"/>
+        <variable
+            name="callback"
+            type="com.payday.kdogruer.view.main.transactions.TransactionListCallback"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_graph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="1dp"
+            app:cardElevation="1dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/slidemenu_widget_bg" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ll_asset"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_change_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:onClick="@{() -> callback.onMonthChangeClick()}"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+                    android:layout_marginRight="@dimen/activity_margin_xx"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_header"
+                    app:layout_constraintTop_toTopOf="@+id/tv_header"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_header"></ImageView>
+
+
+                <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                    android:id="@+id/tv_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/formTextColor"
+                    android:textSize="14sp"
+                    app:customTextFont="fonts/montserrat_regular.otf"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Monthly" />
+
+                <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                    android:id="@+id/tv_category_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:textColor="#006fe6"
+                    android:textSize="14sp"
+                    app:customTextFont="fonts/montserrat_bold.otf"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/f_pie"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_header"
+                    tools:text="Category" />
+
+                <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                    android:id="@+id/tv_category_last_year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Spent:"
+                    android:textColor="#fc5c65"
+                    android:textSize="14sp"
+                    app:customTextFont="fonts/montserrat_bold.otf"
+                    app:layout_constraintStart_toEndOf="@+id/f_pie"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+                <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                    android:id="@+id/tv_total_spent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:text="1509.98"
+                    app:customUnit="$"
+                    app:customUnitType="end"
+                    android:textColor="#fc5c65"
+                    android:textSize="14sp"
+                    app:customTextFont="fonts/montserrat_bold.otf"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+
+                <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                    android:id="@+id/tv_category_this_year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Earned:"
+                    android:textColor="#03b430"
+                    android:textSize="14sp"
+                    app:customTextFont="fonts/montserrat_bold.otf"
+                    app:layout_constraintStart_toEndOf="@+id/f_pie"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_category_last_year" />
+
+
+                <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                    android:id="@+id/tv_total_earned"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:text="2567.682"
+                    android:textColor="#03b430"
+                    android:textSize="14sp"
+                    app:customUnit="$"
+                    app:customUnitType="end"
+                    app:customTextFont="fonts/montserrat_bold.otf"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_category_last_year" />
+
+                <FrameLayout
+                    android:id="@+id/f_pie"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="left|bottom"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_header">
+
+                    <com.payday.kdogruer.view.components.piechart.PieChart
+                        android:id="@+id/piegraph"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center" />
+
+                    <Button
+                        android:id="@+id/bt_next_slice"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_button_bg"
+                        android:text="@string/next"
+                        android:textAllCaps="false"
+                        android:textColor="@color/formTextColor"
+                        android:textSize="17dp" />
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_transactions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:focusable="false"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:focusableInTouchMode="false"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_graph"
+            app:resource="@{resource}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>
+
+

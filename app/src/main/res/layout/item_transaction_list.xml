@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="transaction"
+            type="com.payday.kdogruer.data.local.entity.TransactionEntity" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="#f5f7f9"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        app:cardMaxElevation="0dp"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/activity_margin">
+
+            <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                android:id="@+id/tv_vendor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginRight="16dp"
+                android:ellipsize="end"
+                android:text='@{transaction.transactionVendor}'
+                android:textColor="@color/formTextColor"
+                android:textSize="13sp"
+                app:customTextFont="fonts/montserrat_regular.otf"
+                app:layout_constraintEnd_toStartOf="@+id/tv_amount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Fernando Muslera" />
+
+            <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                android:id="@+id/tv_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/formTextColor"
+                android:textSize="12sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:customTextFont="fonts/montserrat_medium.otf"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_vendor"
+                app:setDate="@{transaction.transactionDate}"
+                tools:text="19.06.2020 11:00" />
+
+            <com.payday.kdogruer.view.components.CustomUnitFontTextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text='@{transaction.transactionAmount}'
+                android:textColor="@color/formTextColor"
+                android:textSize="16sp"
+                app:customTextFont="fonts/montserrat_bold.otf"
+                app:customUnit="$"
+                app:customUnitType="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="5,97" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

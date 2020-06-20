@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">PayDay</string>
+    <string name="msg_null_response">An error has occured.</string>
+
+    <!--drawer-->
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">E-mail</string>
+    <string name="remind_me">REMIND ME</string>
+    <string name="login">LOGIN</string>
+    <string name="homepage">Homepage</string>
+    <string name="accounts">Accounts</string>
+    <string name="transactions">Transactions</string>
+    <string name="next">Next</string>
+
+</resources>
